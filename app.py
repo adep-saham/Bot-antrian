@@ -10,11 +10,13 @@ from selenium.webdriver.support import expected_conditions as EC
 # --- KONFIGURASI BROWSER ---
 def get_driver():
     options = Options()
-    options.add_argument("--headless")  # Wajib untuk server/Streamlit Cloud
+    options.add_argument("--headless") # Wajib di server
     options.add_argument("--no-sandbox")
     options.add_argument("--disable-dev-shm-usage")
+    options.add_argument("--disable-gpu")
     
-    driver = webdriver.Chrome(
+    # Gunakan webdriver-manager untuk instalasi otomatis
+    return webdriver.Chrome(
         service=Service(ChromeDriverManager().install()), 
         options=options
     )
